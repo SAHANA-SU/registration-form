@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: rgb(235, 224, 224);
+}
+
+.container {
+  padding: 16px;
+  background-color: white;
+}
+
+input[type=test] {
+  width: 95%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=name] {
+  width: 95%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+input[type=branch] {
+  width: 95%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+}
+
+input[type=button]{
+  background-color: #ddd;
+  outline: none;
+}
+</style>
+</head>
+<body>
+
+  <div class="container">
+    <h1>Register</h1>
+    <hr>
+
+    <label for="usn"> Enter USN </label>
+<input type="test" id="usn" name="usnNo" />
+
+<label for="name">Name</label>
+<input type="name" id="name"/>
+
+<input type="button" name="Fetch USN details" id="fetchDetails" value="Fetch Details"/>
+
+<div id="studentDetails">	
+
+</div>
+</body>
+<script>
+	var fetchDetails = document.getElementById('fetchDetails');
+	var studentDetailsDiv = document.getElementById('studentDetails');
+
+	var usnDetails = {
+		"1si16te01": {
+				name: "Sahana",
+				branch: "TC"
+		},
+		"1si16te02": {
+				name: "Arpitha",
+				branch: "ECE"
+    },
+    "1si16te03":{
+      name:"bhumika",
+      branch:"TC"
+    },
+    "1si16te04":{
+      name:'bhuvan',
+      branch:"IEM"
+    }
+	}
+
+	fetchDetails.addEventListener('click', () => {
+    	var usn = document.getElementById('usn');
+
+
+    	var studentDetails = usnDetails[usn.value];
+
+    	document.getElementById("name").innerHTML = usnDetails;
+
+      studentDetailsDiv.innerHTML = `
+                                   
+<label for="name">Name</label>
+<input type="name" id="name" value="${studentDetails.name}"/>
+
+<label for="branch">Branch</label>
+<input type="branch" id="branch" value="${studentDetails.branch}" />
+                                     `;
+  });
+  
+</script>
+
+</body>
+</html>
